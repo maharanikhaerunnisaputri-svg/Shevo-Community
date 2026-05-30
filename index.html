@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🩰 Shevo Community — Member Open Recruitment 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --pink-50: #fff0f6;
+    --pink-100: #ffd6e7;
+    --pink-200: #ffadd2;
+    --pink-300: #f882b0;
+    --pink-400: #f24d8b;
+    --pink-500: #e02070;
+    --pink-600: #b8185c;
+    --pink-700: #8c1047;
+    --rose-light: #fff5f8;
+    --rose-mid: #fce4ee;
+    --text-dark: #3d0a1f;
+    --text-mid: #7a2847;
+    --text-soft: #b06080;
+    --border: #f4c0d4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #fdf0f5;
+    min-height: 100vh;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Decorative BG blobs */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, #ffc2d9 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -100px; left: -80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, #ffb3cc 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(145deg, #f9bed3 0%, #f49cbe 50%, #f0b8d0 100%);
+    border-radius: 24px;
+    padding: 2.5rem 2rem 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(220, 80, 130, 0.18);
+    border: 1.5px solid #f4a0be;
+    animation: fadeDown 0.7s ease both;
+  }
+
+  .header::before, .header::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    pointer-events: none;
+  }
+  .header::before { width: 180px; height: 180px; top: -60px; right: -40px; }
+  .header::after  { width: 100px; height: 100px; bottom: -30px; left: 40px; }
+
+  .header-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.45);
+    color: var(--pink-700);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--pink-700);
+  }
+
+  .header-desc {
+    background: rgba(255,255,255,0.42);
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    margin-top: 14px;
+    border: 1px solid rgba(255,255,255,0.5);
+  }
+
+  /* ── STEP INDICATOR ── */
+  .steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.5s 0.2s ease both;
+  }
+
+  .step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .step-circle {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-soft);
+    transition: all 0.3s;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .step-circle.active {
+    background: linear-gradient(135deg, var(--pink-400), var(--pink-600));
+    border-color: var(--pink-500);
+    color: white;
+    box-shadow: 0 4px 14px rgba(224, 32, 112, 0.3);
+  }
+
+  .step-circle.done {
+    background: var(--pink-100);
+    border-color: var(--pink-300);
+    color: var(--pink-600);
+  }
+
+  .step-label {
+    font-size: 10px;
+    color: var(--text-soft);
+    margin-top: 4px;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .step-line {
+    width: 60px;
+    height: 2px;
+    background: var(--border);
+    margin: 0 4px;
+    margin-bottom: 20px;
+    transition: background 0.3s;
+  }
+
+  .step-line.done { background: var(--pink-300); }
+
+  /* ── CARDS / PAGES ── */
+  .page {
+    display: none;
+    animation: fadeUp 0.45s ease both;
+  }
+  .page.active { display: block; }
+
+  .card {
+    background: white;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    padding: 1.8rem 1.8rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 20px rgba(240, 100, 150, 0.07);
+  }
+
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 1rem;
+    border-bottom: 1.5px dashed var(--pink-100);
+    margin-bottom: 1.4rem;
+  }
+
+  .card-badge {
+    background: linear-gradient(135deg, var(--pink-400), var(--pink-500));
+    color: white;
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  .card-title-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+
+  /* ── FIELDS ── */
+  .field {
+    margin-bottom: 1.2rem;
+  }
+
+  label {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  label .req { color: var(--pink-500); margin-left: 2px; }
+  label .opt {
+    font-size: 10.5px;
+    font-weight: 400;
+    color: var(--text-soft);
+    background: var(--rose-mid);
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+  }
+
+  .hint {
+    font-size: 12px;
+    color: var(--text-soft);
+    font-style: italic;
+    margin-bottom: 7px;
+    line-height: 1.5;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="date"],
+  textarea,
+  select {
+    width: 100%;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13.5px;
+    color: var(--text-dark);
+    background: var(--rose-light);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="date"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--pink-400);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(242, 77, 139, 0.1);
+  }
+
+  input::placeholder, textarea::placeholder { color: #d4a0b8; }
+
+  textarea { resize: vertical; min-height: 100px; line-height: 1.65; }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23e8457a' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  /* ── RADIO ── */
+  .radio-group { display: flex; flex-direction: column; gap: 8px; }
+
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--rose-light);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 11px 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .radio-option:hover {
+    border-color: var(--pink-300);
+    background: #fff0f6;
+  }
+
+  .radio-option input[type="radio"] {
+    width: 18px; height: 18px;
+    min-width: 18px;
+    accent-color: var(--pink-500);
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  .radio-option span {
+    font-size: 13.5px;
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+
+  /* ── UPLOAD ── */
+  .upload-box {
+    border: 2px dashed var(--pink-200);
+    border-radius: 14px;
+    padding: 24px 16px;
+    text-align: center;
+    background: var(--rose-light);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .upload-box:hover {
+    border-color: var(--pink-400);
+    background: #fff5f8;
+  }
+
+  .upload-box input[type="file"] {
+    position: absolute; inset: 0;
+    opacity: 0; cursor: pointer;
+    width: 100%; height: 100%;
+    border: none; background: none;
+    padding: 0;
+  }
+
+  .upload-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .upload-box p {
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.6;
+  }
+
+  .upload-box strong { color: var(--pink-500); }
+
+  .upload-box .file-name {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--pink-600);
+    font-weight: 600;
+    display: none;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1.5px dashed var(--pink-100);
+    margin: 1.4rem 0;
+  }
+
+  /* ── NAV BUTTONS ── */
+  .nav-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 1.2rem;
+    justify-content: flex-end;
+  }
+
+  .btn-prev {
+    background: white;
+    color: var(--pink-500);
+    border: 1.5px solid var(--border);
+    border-radius: 30px;
+    padding: 12px 28px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-prev:hover {
+    border-color: var(--pink-400);
+    background: var(--rose-light);
+  }
+
+  .btn-next, .btn-submit {
+    background: linear-gradient(135deg, var(--pink-400), var(--pink-600));
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 32px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(224, 32, 112, 0.25);
+  }
+
+  .btn-next:hover, .btn-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(224, 32, 112, 0.35);
+  }
+
+  .btn-next:active, .btn-submit:active { transform: translateY(0); }
+
+  /* ── SUCCESS PAGE ── */
+  #success-page {
+    display: none;
+    text-align: center;
+    padding: 3rem 1rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .success-icon {
+    font-size: 64px;
+    display: block;
+    margin-bottom: 1rem;
+    animation: bounce 1s ease;
+  }
+
+  #success-page h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+  }
+
+  .success-card {
+    background: white;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    padding: 1.8rem;
+    margin-top: 1.5rem;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(240, 100, 150, 0.08);
+  }
+
+  .success-card p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #25d366, #128c44);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin-top: 0.5rem;
+    transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+  }
+
+  .wa-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35); }
+
+  .closing-hearts {
+    font-size: 28px;
+    letter-spacing: 6px;
+    margin-top: 1.5rem;
+    display: block;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-16px); }
+    60% { transform: translateY(-6px); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 500px) {
+    .header h1 { font-size: 23px; }
+    .card { padding: 1.4rem 1.2rem; }
+    .step-line { width: 36px; }
+    .step-label { font-size: 9px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-tag">🩰 Open Recruitment 2026 ✨</div>
+    <h1>Shevo Community<br><em>Member Registration</em></h1>
+    <div class="header-desc">
+      Calling all the amazing girls out there! 💖 Manifesting a safe space to grow, speak up, and empower each other? You're in the right place, babe &gt;.&lt;<br><br>
+      Yuk, join bagian dari perjalanan seru kita dan jadi agen perubahan yang inspiring. Let's glow up and grow together inside Shevo Community! 🫶🏼✨<br><br>
+      <em>Please fill out this form with your authentic self, okay? Can't wait to see you! 🎀</em>
+    </div>
+  </div>
+
+  <!-- STEP INDICATOR -->
+  <div class="steps" id="steps-bar">
+    <div class="step-item">
+      <div class="step-circle active" id="step-1" onclick="goToPage(1)">1</div>
+      <div class="step-label">About You</div>
+    </div>
+    <div class="step-line" id="line-1"></div>
+    <div class="step-item">
+      <div class="step-circle" id="step-2" onclick="goToPage(2)">2</div>
+      <div class="step-label">Explore</div>
+    </div>
+    <div class="step-line" id="line-2"></div>
+    <div class="step-item">
+      <div class="step-circle" id="step-3" onclick="goToPage(3)">3</div>
+      <div class="step-label">Division</div>
+    </div>
+    <div class="step-line" id="line-3"></div>
+    <div class="step-item">
+      <div class="step-circle" id="step-4" onclick="goToPage(4)">4</div>
+      <div class="step-label">Finish</div>
+    </div>
+  </div>
+
+  <!-- ══ PAGE 1 ══ -->
+  <div class="page active" id="page-1">
+    <div class="card">
+      <div class="card-title">
+        <span class="card-badge">Page 1 of 4</span>
+        <span class="card-title-text">🎀 All About You — Personal Data</span>
+      </div>
+
+      <div class="field">
+        <label for="nama">Nama Lengkap <span class="req">*</span></label>
+        <input type="text" id="nama" placeholder="Nama lengkap kamu..." required>
+      </div>
+
+      <div class="field">
+        <label for="nickname">Nama Panggilan / Your Nickname <span class="req">*</span></label>
+        <p class="hint">Gimana kita harus panggil kamu, cantik? 🥰</p>
+        <input type="text" id="nickname" placeholder="Panggil aku..." required>
+      </div>
+
+      <div class="field">
+        <label for="ttl">Tempat, Tanggal Lahir <span class="req">*</span></label>
+        <input type="text" id="ttl" placeholder="Contoh: Jakarta, 14 Februari 2003" required>
+      </div>
+
+      <div class="field">
+        <label for="domisili">Domisili / City <span class="req">*</span></label>
+        <p class="hint">Kamu lagi stay di kota mana nih sekarang?</p>
+        <input type="text" id="domisili" placeholder="Kota domisili kamu..." required>
+      </div>
+
+      <div class="field">
+        <label for="instansi">Instansi / Kesibukan Saat Ini <span class="req">*</span></label>
+        <p class="hint">Are you a student, college girl, or career woman? Tell us! 🏢</p>
+        <input type="text" id="instansi" placeholder="Universitas / Sekolah / Tempat kerja..." required>
+      </div>
+
+      <div class="field">
+        <label for="whatsapp">No. WhatsApp (Aktif) <span class="req">*</span></label>
+        <input type="tel" id="whatsapp" placeholder="+62 8xx xxxx xxxx" required>
+        <p class="hint" style="margin-top:6px; margin-bottom:0;">Make sure nomornya bener ya, biar nggak miss communication! 📱</p>
+      </div>
+
+      <div class="field">
+        <label for="sosmed">Akun Instagram / TikTok <span class="req">*</span></label>
+        <p class="hint">Drop your social media handle, let's be mutuals! (Jangan di-private ya, babe) 📸</p>
+        <input type="text" id="sosmed" placeholder="@username kamu..." required>
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="btn-next" onclick="nextPage(1)">Lanjut &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ══ PAGE 2 ══ -->
+  <div class="page" id="page-2">
+    <div class="card">
+      <div class="card-title">
+        <span class="card-badge">Page 2 of 4</span>
+        <span class="card-title-text">💅 Let's Talk More! — Self-Exploration</span>
+      </div>
+
+      <div class="field">
+        <label for="about">Tell us about yourself! <span class="req">*</span></label>
+        <p class="hint">Ceritain singkat dong tentang diri kamu, hobi, atau fun fact unik tentang kamu! 🦄</p>
+        <textarea id="about" placeholder="Hii! My name is... aku suka..." required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="motivation">Why do you want to join Shevo Community? <span class="req">*</span></label>
+        <p class="hint">Apa sih yang bikin kamu tertarik buat join current wave kita kali ini? Share your motivation! 💘</p>
+        <textarea id="motivation" placeholder="Saya ingin join Shevo karena..." required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="empowerment">What does "Women Empowerment" mean to you? <span class="req">*</span></label>
+        <p class="hint">Menurut pandangan kamu, seberapa penting sih sesama perempuan itu saling support dan empower? 🌸</p>
+        <textarea id="empowerment" placeholder="Bagi saya, women empowerment adalah..." required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="kelebihan">Kelebihan &amp; Kekurangan Diri <span class="req">*</span></label>
+        <p class="hint">What is your biggest superpower? Dan hal apa yang pengen kamu improve di sini? ✨</p>
+        <textarea id="kelebihan" placeholder="Kelebihan saya adalah... sedangkan yang mau saya improve adalah..." required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="organisasi">Pengalaman Organisasi / Kepanitiaan <span class="opt">Optional</span></label>
+        <p class="hint">Punya pengalaman seru di organisasi sebelumnya? Boleh banget diceritain! Kalau belum ada, it's totally fine, kita belajar bareng! 🫶🏼</p>
+        <textarea id="organisasi" placeholder="Saya pernah aktif di... (isi jika ada, lewati jika belum)"></textarea>
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="btn-prev" onclick="prevPage(2)">&larr; Kembali</button>
+      <button class="btn-next" onclick="nextPage(2)">Lanjut &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ══ PAGE 3 ══ -->
+  <div class="page" id="page-3">
+    <div class="card">
+      <div class="card-title">
+        <span class="card-badge">Page 3 of 4</span>
+        <span class="card-title-text">🎡 Choose Your Path — Division Selection</span>
+      </div>
+
+      <div class="field">
+        <label for="divisi1">Pilihan Divisi Utama (1st Choice) <span class="req">*</span></label>
+        <select id="divisi1" required onchange="updateDiv2Options()">
+          <option value="" disabled selected>Pilih divisi utamamu...</option>
+          <option value="Secretary">Secretary</option>
+          <option value="Finance">Finance</option>
+          <option value="Program Development">Program Development</option>
+          <option value="HRD">HRD (Human Resource Development)</option>
+          <option value="Event & Logistics">Event &amp; Logistics</option>
+          <option value="Public Relation">Public Relation</option>
+          <option value="Social Media">Social Media</option>
+          <option value="Research & Advocacy">Research &amp; Advocacy</option>
+          <option value="Vice Leader">Vice Leader</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="alasan1">Alasan Memilih Divisi Tersebut <span class="req">*</span></label>
+        <p class="hint">Kenapa kamu ngerasa cocok banget di divisi pilihanmu tadi? Let us know your potential! 🚀</p>
+        <textarea id="alasan1" placeholder="Saya memilih divisi ini karena..." required></textarea>
+      </div>
+
+      <hr class="divider">
+
+      <div class="field">
+        <label for="divisi2">Pilihan Divisi Cadangan (2nd Choice) <span class="req">*</span></label>
+        <select id="divisi2" required>
+          <option value="" disabled selected>Pilih divisi cadanganmu...</option>
+          <option value="Secretary">Secretary</option>
+          <option value="Finance">Finance</option>
+          <option value="Program Development">Program Development</option>
+          <option value="HRD">HRD (Human Resource Development)</option>
+          <option value="Event & Logistics">Event &amp; Logistics</option>
+          <option value="Public Relation">Public Relation</option>
+          <option value="Social Media">Social Media</option>
+          <option value="Research & Advocacy">Research &amp; Advocacy</option>
+          <option value="Vice Leader">Vice Leader</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="alasan2">Alasan Memilih Divisi Tersebut <span class="req">*</span></label>
+        <p class="hint">Kenapa kamu ngerasa cocok banget di divisi pilihanmu tadi? Let us know your potential! 🚀</p>
+        <textarea id="alasan2" placeholder="Saya memilih divisi cadangan ini karena..." required></textarea>
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="btn-prev" onclick="prevPage(3)">&larr; Kembali</button>
+      <button class="btn-next" onclick="nextPage(3)">Lanjut &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ══ PAGE 4 ══ -->
+  <div class="page" id="page-4">
+    <div class="card">
+      <div class="card-title">
+        <span class="card-badge">Page 4 of 4</span>
+        <span class="card-title-text">📸 Confirmation &amp; The Final Touch</span>
+      </div>
+
+      <div class="field">
+        <label>Upload CV / Portofolio <span class="opt">Optional</span></label>
+        <p class="hint">Drop your best CV or portfolio here to show your amazing journey! 📁✨</p>
+        <div class="upload-box" id="upload-cv-box">
+          <input type="file" id="upload-cv" accept=".pdf,.doc,.docx" onchange="showFileName('upload-cv', 'cv-name')">
+          <span class="upload-icon">📄</span>
+          <p><strong>Klik untuk upload</strong> atau drag &amp; drop file-mu di sini<br>PDF, DOC, DOCX • Max 10MB</p>
+          <div class="file-name" id="cv-name"></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Upload Foto Terbaikmu! <span class="req">*</span></label>
+        <p class="hint">Share your favorite photo! Bebas, yang penting showing your bright smile and positive vibes! 📸💖</p>
+        <div class="upload-box" id="upload-foto-box">
+          <input type="file" id="upload-foto" accept="image/*" onchange="showFileName('upload-foto', 'foto-name')">
+          <span class="upload-icon">🌸</span>
+          <p><strong>Klik untuk upload foto</strong><br>JPG, PNG, WEBP • Max 5MB</p>
+          <div class="file-name" id="foto-name"></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Komitmen <span class="req">*</span></label>
+        <p class="hint">Are you ready to commit, grow, and have fun with Shevo for the next one period? 🥺</p>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="komitmen" value="Yes, I'm totally ready! 🎀" required>
+            <span>Yes, I'm totally ready! 🎀</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="komitmen" value="Yes, let's do this! ✨">
+            <span>Yes, let's do this! ✨</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="btn-prev" onclick="prevPage(4)">&larr; Kembali</button>
+      <button class="btn-submit" onclick="submitForm()">Submit my response 🎀</button>
+    </div>
+  </div>
+
+  <!-- ══ SUCCESS ══ -->
+  <div id="success-page">
+    <span class="success-icon">🥳</span>
+    <h2>Yay! Your response has been recorded!</h2>
+
+    <div class="success-card">
+      <p>
+        Thank you so much for taking your time to fill this out, love. 💖<br>
+        Langkah awal kamu buat jadi bagian dari <strong>empowered women</strong> udah dimulai!
+      </p>
+      <p>
+        Yukk join group WhatsApp Shevo sekarang juga buat dapetin info lebih lanjut:
+      </p>
+      <a class="wa-btn" href="https://chat.whatsapp.com/FrwAdBmgnQxDC2hn9Gy6ak?mode=gi_t" target="_blank">
+        💬 &nbsp; Join WhatsApp Group Shevo
+      </a>
+      <p style="margin-top:1.2rem;">
+        Stay tuned terus di Instagram kita buat pengumuman selanjutnya, ya.<br>
+        Have a lovely day, beautiful! See ya! 🩰✨🎀
+      </p>
+    </div>
+
+    <span class="closing-hearts">🎀 🌸 💖 🩰 ✨</span>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+  var currentPage = 1;
+
+  function goToPage(n) {
+    if (n > currentPage) return;
+    showPage(n);
+  }
+
+  function nextPage(from) {
+    if (!validatePage(from)) return;
+    showPage(from + 1);
+  }
+
+  function prevPage(from) {
+    showPage(from - 1);
+  }
+
+  function showPage(n) {
+    document.getElementById('page-' + currentPage).classList.remove('active');
+    currentPage = n;
+    document.getElementById('page-' + n).classList.add('active');
+    updateSteps(n);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function updateSteps(active) {
+    for (var i = 1; i <= 4; i++) {
+      var circle = document.getElementById('step-' + i);
+      circle.classList.remove('active', 'done');
+      if (i < active) {
+        circle.classList.add('done');
+        circle.textContent = '✓';
+      } else if (i === active) {
+        circle.classList.add('active');
+        circle.textContent = i;
+      } else {
+        circle.textContent = i;
+      }
+    }
+    for (var j = 1; j <= 3; j++) {
+      var line = document.getElementById('line-' + j);
+      line.classList.toggle('done', j < active);
+    }
+  }
+
+  function validatePage(page) {
+    var fields = document.querySelectorAll('#page-' + page + ' [required]');
+    var valid = true;
+    fields.forEach(function(f) {
+      f.style.borderColor = '';
+      if (f.type === 'radio') return;
+      if (!f.value.trim()) {
+        f.style.borderColor = '#e8457a';
+        f.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        valid = false;
+      }
+    });
+
+    if (page === 4) {
+      var radioChecked = document.querySelector('input[name="komitmen"]:checked');
+      if (!radioChecked) {
+        document.querySelector('.radio-group').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        valid = false;
+      }
+      var foto = document.getElementById('upload-foto');
+      if (!foto.files || !foto.files.length) {
+        document.getElementById('upload-foto-box').style.borderColor = '#e8457a';
+        foto.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        valid = false;
+      }
+    }
+
+    return valid;
+  }
+
+  function showFileName(inputId, displayId) {
+    var input = document.getElementById(inputId);
+    var display = document.getElementById(displayId);
+    if (input.files && input.files[0]) {
+      display.textContent = '✅ ' + input.files[0].name;
+      display.style.display = 'block';
+      document.getElementById(inputId + '-box') && (document.getElementById(inputId === 'upload-cv' ? 'upload-cv-box' : 'upload-foto-box').style.borderColor = '#4caf50');
+    }
+  }
+
+  async function submitForm() {
+    if (!validatePage(4)) return;
+
+    var btn = document.querySelector('.btn-submit');
+    btn.textContent = 'Submitting... 💌';
+    btn.disabled = true;
+
+    var radioChecked = document.querySelector('input[name="komitmen"]:checked');
+
+    var data = {
+      access_key: 'c52962e1-bd78-4c8b-83bc-8ff58c4ace4c',
+      subject: '🎀 New Shevo Applicant — ' + document.getElementById('nama').value,
+      from_name: 'Shevo Community Form',
+      'Nama Lengkap': document.getElementById('nama').value,
+      'Nama Panggilan': document.getElementById('nickname').value,
+      'Tempat Tanggal Lahir': document.getElementById('ttl').value,
+      'Domisili': document.getElementById('domisili').value,
+      'Instansi / Kesibukan': document.getElementById('instansi').value,
+      'No. WhatsApp': document.getElementById('whatsapp').value,
+      'Instagram / TikTok': document.getElementById('sosmed').value,
+      'About Yourself': document.getElementById('about').value,
+      'Motivasi Join Shevo': document.getElementById('motivation').value,
+      'Women Empowerment': document.getElementById('empowerment').value,
+      'Kelebihan dan Kekurangan': document.getElementById('kelebihan').value,
+      'Pengalaman Organisasi': document.getElementById('organisasi').value || '-',
+      'Divisi Utama': document.getElementById('divisi1').value,
+      'Alasan Divisi Utama': document.getElementById('alasan1').value,
+      'Divisi Cadangan': document.getElementById('divisi2').value,
+      'Alasan Divisi Cadangan': document.getElementById('alasan2').value,
+      'Komitmen': radioChecked ? radioChecked.value : '-'
+    };
+
+    try {
+      var res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      var json = await res.json();
+      if (res.ok && json.success) {
+        document.getElementById('page-4').classList.remove('active');
+        document.getElementById('steps-bar').style.display = 'none';
+        document.getElementById('success-page').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        btn.textContent = 'Submit my response 🎀';
+        btn.disabled = false;
+        alert('Oops! Ada masalah saat submit. Coba lagi ya, babe 🥺');
+      }
+    } catch (e) {
+      btn.textContent = 'Submit my response 🎀';
+      btn.disabled = false;
+      alert('Oops! Koneksi bermasalah. Coba lagi ya 💕');
+    }
+  }
+
+  function updateDiv2Options() {
+    var v1 = document.getElementById('divisi1').value;
+    var sel2 = document.getElementById('divisi2');
+    var opts = sel2.options;
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].disabled = opts[i].value === v1;
+      if (opts[i].value === v1 && sel2.value === v1) {
+        sel2.value = '';
+      }
+    }
+  }
+</script>
+</body>
+</html>
