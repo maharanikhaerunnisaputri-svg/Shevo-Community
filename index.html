@@ -696,7 +696,6 @@
           <option value="Public Relation">Public Relation</option>
           <option value="Social Media">Social Media</option>
           <option value="Research & Advocacy">Research &amp; Advocacy</option>
-          <option value="Vice Leader">Vice Leader</option>
         </select>
       </div>
 
@@ -720,7 +719,6 @@
           <option value="Public Relation">Public Relation</option>
           <option value="Social Media">Social Media</option>
           <option value="Research & Advocacy">Research &amp; Advocacy</option>
-          <option value="Vice Leader">Vice Leader</option>
         </select>
       </div>
 
@@ -759,6 +757,17 @@
       <div class="field">
         <label>Upload Foto Terbaikmu! <span class="req">*</span></label>
         <p class="hint">Share your favorite photo! Bebas, yang penting showing your bright smile and positive vibes! 📸💖</p>
+        <div class="upload-box" id="upload-foto-box">
+          <input type="file" id="upload-foto" accept="image/*" onchange="showFileName('upload-foto', 'foto-name')">
+          <span class="upload-icon">🌸</span>
+          <p><strong>Klik untuk upload foto</strong><br>JPG, PNG, WEBP • Max 5MB</p>
+          <div class="file-name" id="foto-name"></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Upload Foto Follow IG @shevo-bekasi ! <span class="req">*</span></label>
+        <p class="hint">Yuk follow ig Shevo untuk mendapatkan update info terbaru 💖</p>
         <div class="upload-box" id="upload-foto-box">
           <input type="file" id="upload-foto" accept="image/*" onchange="showFileName('upload-foto', 'foto-name')">
           <span class="upload-icon">🌸</span>
@@ -944,7 +953,7 @@
       if (res.ok && json.success) {
         document.getElementById('page-4').classList.remove('active');
         document.getElementById('steps-bar').style.display = 'none';
-        document.getElementById('success-page').style.display = 'block';
+        document.getElementByIGITd('success-page').style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         btn.textContent = 'Submit my response 🎀';
