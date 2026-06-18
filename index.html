@@ -394,6 +394,15 @@
     display: none;
   }
 
+  .upload-box .upload-error {
+    margin-top: 8px;
+    font-size: 11.5px;
+    color: #d6336c;
+    font-weight: 600;
+    display: none;
+    line-height: 1.5;
+  }
+
   /* ── DIVIDER ── */
   .divider {
     border: none;
@@ -747,54 +756,61 @@
         <label>Upload CV / Portofolio <span class="opt">Optional</span></label>
         <p class="hint">Drop your best CV or portfolio here to show your amazing journey! 📁✨</p>
         <div class="upload-box" id="upload-cv-box">
-          <input type="file" id="upload-cv" accept=".pdf,.doc,.docx" onchange="showFileName('upload-cv', 'cv-name')">
+          <input type="file" id="upload-cv" accept=".pdf,.doc,.docx,application/pdf,application/msword" onchange="handleFileSelect('upload-cv', 'cv-name', 10, ['.pdf', '.doc', '.docx'])">
           <span class="upload-icon">📄</span>
           <p><strong>Klik untuk upload</strong> atau drag &amp; drop file-mu di sini<br>PDF, DOC, DOCX • Max 10MB</p>
           <div class="file-name" id="cv-name"></div>
-        </div>
-      </div>
-
-            <div class="field">
-        <label>Upload Foto Terbaikmu! <span class="req">*</span></label>
-        <p class="hint">Share your favorite photo! Bebas, yang penting showing your bright smile and positive vibes! 📸💖</p>
-        <div class="upload-box" id="upload-foto-box">
-          <input type="file" id="upload-foto" accept="image/*" onchange="showFileName('upload-foto', 'foto-name')">
-          <span class="upload-icon">🌸</span>
-          <p><strong>Klik untuk upload foto</strong><br>JPG, PNG, WEBP • Max 10MB</p>
-          <div class="file-name" id="foto-name"></div>
+          <div class="upload-error" id="cv-error"></div>
         </div>
       </div>
 
       <div class="field">
-    <label>
-        Upload Follow IG @shevo.bekasi, Bukti Share Oprec pada Story IG,
-        Bukti Mention 3 Teman pada Postingan Oprec
-        <span class="opt">Optional</span>
-    </label>
+        <label>Upload Foto Terbaikmu! <span class="req">*</span></label>
+        <p class="hint">Share your favorite photo! Bebas, yang penting showing your bright smile and positive vibes! 📸💖</p>
+        <div class="upload-box" id="upload-foto-box">
+          <input type="file" id="upload-foto" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" onchange="handleFileSelect('upload-foto', 'foto-name', 10, ['.jpg', '.jpeg', '.png', '.webp'])">
+          <span class="upload-icon">🌸</span>
+          <p><strong>Klik untuk upload foto</strong><br>JPG, JPEG, PNG, WEBP • Max 10MB</p>
+          <div class="file-name" id="foto-name"></div>
+          <div class="upload-error" id="foto-error"></div>
+        </div>
+      </div>
 
-    <p class="hint">
-        📄 Satukan ketiga bukti menjadi <strong>1 file PDF</strong> sebelum diunggah yaa! ✨
-    </p>
+      <div class="field">
+        <label>Bukti Follow Instagram @shevo.bekasi <span class="opt">Optional</span></label>
+        <p class="hint">📸 Screenshot halaman profil @shevo.bekasi yang nunjukkin kamu udah follow, ya!</p>
+        <div class="upload-box" id="upload-bukti-follow-box">
+          <input type="file" id="upload-bukti-follow" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" onchange="handleFileSelect('upload-bukti-follow', 'bukti-follow-name', 5, ['.jpg', '.jpeg', '.png', '.webp'])">
+          <span class="upload-icon">💗</span>
+          <p><strong>Klik untuk upload screenshot</strong><br>JPG, JPEG, PNG, WEBP • Max 5MB</p>
+          <div class="file-name" id="bukti-follow-name"></div>
+          <div class="upload-error" id="bukti-follow-error"></div>
+        </div>
+      </div>
 
-    <div class="upload-box" id="upload-bukti-box">
+      <div class="field">
+        <label>Bukti Share Oprec pada Story IG <span class="opt">Optional</span></label>
+        <p class="hint">📸 Screenshot story kamu yang udah share poster Open Recruitment Shevo, ya!</p>
+        <div class="upload-box" id="upload-bukti-share-box">
+          <input type="file" id="upload-bukti-share" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" onchange="handleFileSelect('upload-bukti-share', 'bukti-share-name', 5, ['.jpg', '.jpeg', '.png', '.webp'])">
+          <span class="upload-icon">📲</span>
+          <p><strong>Klik untuk upload screenshot</strong><br>JPG, JPEG, PNG, WEBP • Max 5MB</p>
+          <div class="file-name" id="bukti-share-name"></div>
+          <div class="upload-error" id="bukti-share-error"></div>
+        </div>
+      </div>
 
-        <input
-            type="file"
-            id="upload-bukti"
-            accept=".pdf,.doc,.docx"
-            onchange="showFileName('upload-bukti','bukti-name')">
-
-        <span class="upload-icon">📄</span>
-
-        <p>
-            <strong>Klik untuk upload file</strong><br>
-            PDF, DOC, DOCX • Max 10MB
-        </p>
-
-        <div class="file-name" id="bukti-name"></div>
-
-    </div>
-</div>
+      <div class="field">
+        <label>Bukti Mention 3 Teman pada Postingan Oprec <span class="opt">Optional</span></label>
+        <p class="hint">📸 Screenshot komentar kamu yang udah mention 3 teman di postingan Open Recruitment, ya!</p>
+        <div class="upload-box" id="upload-bukti-mention-box">
+          <input type="file" id="upload-bukti-mention" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" onchange="handleFileSelect('upload-bukti-mention', 'bukti-mention-name', 5, ['.jpg', '.jpeg', '.png', '.webp'])">
+          <span class="upload-icon">👯‍♀️</span>
+          <p><strong>Klik untuk upload screenshot</strong><br>JPG, JPEG, PNG, WEBP • Max 5MB</p>
+          <div class="file-name" id="bukti-mention-name"></div>
+          <div class="upload-error" id="bukti-mention-error"></div>
+        </div>
+      </div>
 
       <div class="field">
         <label>Komitmen <span class="req">*</span></label>
@@ -920,35 +936,65 @@
     return valid;
   }
 
-  function showFileName(inputId, displayId) {
-    const input = document.getElementById(inputId);
-    const display = document.getElementById(displayId);
+  function handleFileSelect(inputId, displayId, maxSizeMB, allowedExts) {
+    var input = document.getElementById(inputId);
+    var display = document.getElementById(displayId);
+    var box = input.closest('.upload-box');
 
-    if (input.files && input.files[0]) {
-        display.textContent = "✅ " + input.files[0].name;
-        display.style.display = "block";
-
-        const box = input.closest(".upload-box");
-        if (box) {
-            box.style.borderColor = "#4caf50";
-        }
+    // Find (or create as a fallback) the inline error slot for this upload box
+    var errorEl = document.getElementById(displayId.replace(/-name$/, '-error'));
+    if (!errorEl) {
+      errorEl = box.querySelector('.upload-error');
     }
-}
-
-function showFileName(inputId, displayId) {
-    const input = document.getElementById(inputId);
-    const display = document.getElementById(displayId);
-
-    if (input.files && input.files[0]) {
-        display.textContent = "✅ " + input.files[0].name;
-        display.style.display = "block";
-
-        const box = input.closest(".upload-box");
-        if (box) {
-            box.style.borderColor = "#4caf50";
-        }
+    if (!errorEl) {
+      errorEl = document.createElement('div');
+      errorEl.className = 'upload-error';
+      box.appendChild(errorEl);
     }
-}
+
+    if (!input.files || !input.files.length) {
+      display.style.display = 'none';
+      errorEl.style.display = 'none';
+      box.style.borderColor = '';
+      return;
+    }
+
+    var file = input.files[0];
+    var nameLower = file.name.toLowerCase();
+    var extOk = allowedExts.some(function (ext) { return nameLower.endsWith(ext); });
+    var maxBytes = maxSizeMB * 1024 * 1024;
+    var sizeOk = file.size <= maxBytes;
+
+    if (!extOk) {
+      input.value = '';
+      display.style.display = 'none';
+      box.style.borderColor = '#e8457a';
+      errorEl.textContent = '⚠️ Format file nggak sesuai. Gunakan: ' + allowedExts.join(', ').toUpperCase();
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    if (!sizeOk) {
+      input.value = '';
+      display.style.display = 'none';
+      box.style.borderColor = '#e8457a';
+      errorEl.textContent = '⚠️ Ukuran file maksimal ' + maxSizeMB + 'MB (file kamu ' + (file.size / (1024 * 1024)).toFixed(1) + 'MB). Coba kompres dulu yaa!';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    errorEl.style.display = 'none';
+    display.textContent = '✅ ' + file.name;
+    display.style.display = 'block';
+    box.style.borderColor = '#4caf50';
+  }
+
+  function appendFileIfExists(formData, inputId, fieldName) {
+    var input = document.getElementById(inputId);
+    if (input && input.files && input.files.length) {
+      formData.append(fieldName, input.files[0]);
+    }
+  }
 
   async function submitForm() {
     if (!validatePage(4)) return;
@@ -959,42 +1005,49 @@ function showFileName(inputId, displayId) {
 
     var radioChecked = document.querySelector('input[name="komitmen"]:checked');
 
-    var data = {
-      access_key: 'c52962e1-bd78-4c8b-83bc-8ff58c4ace4c',
-      subject: '🎀 New Shevo Applicant — ' + document.getElementById('nama').value,
-      from_name: 'Shevo Community Form',
-      'Nama Lengkap': document.getElementById('nama').value,
-      'Nama Panggilan': document.getElementById('nickname').value,
-      'Tempat Tanggal Lahir': document.getElementById('ttl').value,
-      'Domisili': document.getElementById('domisili').value,
-      'Instansi / Kesibukan': document.getElementById('instansi').value,
-      'No. WhatsApp': document.getElementById('whatsapp').value,
-      'Instagram / TikTok': document.getElementById('sosmed').value,
-      'About Yourself': document.getElementById('about').value,
-      'Motivasi Join Shevo': document.getElementById('motivation').value,
-      'Women Empowerment': document.getElementById('empowerment').value,
-      'Kelebihan dan Kekurangan': document.getElementById('kelebihan').value,
-      'Pengalaman Organisasi': document.getElementById('organisasi').value || '-',
-      'Divisi Utama': document.getElementById('divisi1').value,
-      'Alasan Divisi Utama': document.getElementById('alasan1').value,
-      'Divisi Cadangan': document.getElementById('divisi2').value,
-      'Alasan Divisi Cadangan': document.getElementById('alasan2').value,
-      'Komitmen': radioChecked ? radioChecked.value : '-'
-    };
+    var formData = new FormData();
+    formData.append('access_key', 'c52962e1-bd78-4c8b-83bc-8ff58c4ace4c');
+    formData.append('subject', '🎀 New Shevo Applicant — ' + document.getElementById('nama').value);
+    formData.append('from_name', 'Shevo Community Form');
+    formData.append('Nama Lengkap', document.getElementById('nama').value);
+    formData.append('Nama Panggilan', document.getElementById('nickname').value);
+    formData.append('Tempat Tanggal Lahir', document.getElementById('ttl').value);
+    formData.append('Domisili', document.getElementById('domisili').value);
+    formData.append('Instansi / Kesibukan', document.getElementById('instansi').value);
+    formData.append('No. WhatsApp', document.getElementById('whatsapp').value);
+    formData.append('Instagram / TikTok', document.getElementById('sosmed').value);
+    formData.append('About Yourself', document.getElementById('about').value);
+    formData.append('Motivasi Join Shevo', document.getElementById('motivation').value);
+    formData.append('Women Empowerment', document.getElementById('empowerment').value);
+    formData.append('Kelebihan dan Kekurangan', document.getElementById('kelebihan').value);
+    formData.append('Pengalaman Organisasi', document.getElementById('organisasi').value || '-');
+    formData.append('Divisi Utama', document.getElementById('divisi1').value);
+    formData.append('Alasan Divisi Utama', document.getElementById('alasan1').value);
+    formData.append('Divisi Cadangan', document.getElementById('divisi2').value);
+    formData.append('Alasan Divisi Cadangan', document.getElementById('alasan2').value);
+    formData.append('Komitmen', radioChecked ? radioChecked.value : '-');
+
+    // Attach files — only added if the applicant actually picked one (CV, bukti-bukti are optional)
+    appendFileIfExists(formData, 'upload-cv', 'CV / Portofolio');
+    appendFileIfExists(formData, 'upload-foto', 'Foto Terbaik');
+    appendFileIfExists(formData, 'upload-bukti-follow', 'Bukti Follow IG');
+    appendFileIfExists(formData, 'upload-bukti-share', 'Bukti Share Story');
+    appendFileIfExists(formData, 'upload-bukti-mention', 'Bukti Mention 3 Teman');
 
     try {
+      // Note: do NOT set a Content-Type header here — the browser needs to set its
+      // own multipart boundary automatically for the files to upload correctly.
       var res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
+        headers: { 'Accept': 'application/json' },
+        body: formData
       });
-      
 
       var json = await res.json();
       if (res.ok && json.success) {
         document.getElementById('page-4').classList.remove('active');
         document.getElementById('steps-bar').style.display = 'none';
-        document.getElementByIGITd('success-page').style.display = 'block';
+        document.getElementById('success-page').style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         btn.textContent = 'Submit my response 🎀';
