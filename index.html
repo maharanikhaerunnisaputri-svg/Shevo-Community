@@ -754,7 +754,7 @@
         </div>
       </div>
 
-      <div class="field">
+            <div class="field">
         <label>Upload Foto Terbaikmu! <span class="req">*</span></label>
         <p class="hint">Share your favorite photo! Bebas, yang penting showing your bright smile and positive vibes! 📸💖</p>
         <div class="upload-box" id="upload-foto-box">
@@ -766,37 +766,35 @@
       </div>
 
       <div class="field">
-        <label>Upload Foto Follow IG @shevo.bekasi ! <span class="req">*</span></label>
-        <p class="hint">Yuk follow ig Shevo untuk mendapatkan update info terbaru 💖</p>
-        <div class="upload-box" id="upload-foto-box">
-          <input type="file" id="upload-foto" accept="image/*" onchange="showFileName('upload-foto', 'foto-name')">
-          <span class="upload-icon">📄</span>
-          <p><strong>Klik untuk upload foto</strong><br>JPG, PNG, WEBP • Max 10MB</p>
-          <div class="file-name" id="foto-name"></div>
-        </div>
-      </div>
+    <label>
+        Upload Follow IG @shevo.bekasi, Bukti Share Oprec pada Story IG,
+        Bukti Mention 3 Teman pada Postingan Oprec
+        <span class="opt">Optional</span>
+    </label>
 
-      <div class="field">
-        <label>Upload Bukti Share Postingan Oprec pada Story Instagram<span class="req">*</span></label>
-        <p class="hint">Pastikan menggunakan akun first kamu ya! Akan ada pengecekan.</p>
-        <div class="upload-box" id="upload-foto-box">
-          <input type="file" id="upload-foto" accept="image/*" onchange="showFileName('upload-foto', 'foto-name')">
-          <span class="upload-icon">🌸</span>
-          <p><strong>Klik untuk upload foto</strong><br>JPG, PNG, WEBP • Max 10MB</p>
-          <div class="file-name" id="foto-name"></div>
-        </div>
-      </div>
+    <p class="hint">
+        📄 Satukan ketiga bukti menjadi <strong>1 file PDF</strong> sebelum diunggah yaa! ✨
+    </p>
 
-       <div class="field">
-        <label>Upload Bukti Mention 3 Teman pada Postingan Oprec @shevo.bekasi<span class="req">*</span></label>
-        <p class="hint">Yuk ajak teman kamu untuk daftar juga!</p>
-        <div class="upload-box" id="upload-foto-box">
-          <input type="file" id="upload-foto" accept="image/*" onchange="showFileName('upload-foto', 'foto-name')">
-          <span class="upload-icon">📄</span>
-          <p><strong>Klik untuk upload foto</strong><br>JPG, PNG, WEBP • Max 10MB</p>
-          <div class="file-name" id="foto-name"></div>
-        </div>
-      </div>
+    <div class="upload-box" id="upload-bukti-box">
+
+        <input
+            type="file"
+            id="upload-bukti"
+            accept=".pdf,.doc,.docx"
+            onchange="showFileName('upload-bukti','bukti-name')">
+
+        <span class="upload-icon">📄</span>
+
+        <p>
+            <strong>Klik untuk upload file</strong><br>
+            PDF, DOC, DOCX • Max 10MB
+        </p>
+
+        <div class="file-name" id="bukti-name"></div>
+
+    </div>
+</div>
 
       <div class="field">
         <label>Komitmen <span class="req">*</span></label>
@@ -923,14 +921,34 @@
   }
 
   function showFileName(inputId, displayId) {
-    var input = document.getElementById(inputId);
-    var display = document.getElementById(displayId);
+    const input = document.getElementById(inputId);
+    const display = document.getElementById(displayId);
+
     if (input.files && input.files[0]) {
-      display.textContent = '✅ ' + input.files[0].name;
-      display.style.display = 'block';
-      document.getElementById(inputId + '-box') && (document.getElementById(inputId === 'upload-cv' ? 'upload-cv-box' : 'upload-foto-box').style.borderColor = '#4caf50');
+        display.textContent = "✅ " + input.files[0].name;
+        display.style.display = "block";
+
+        const box = input.closest(".upload-box");
+        if (box) {
+            box.style.borderColor = "#4caf50";
+        }
     }
-  }
+}
+
+function showFileName(inputId, displayId) {
+    const input = document.getElementById(inputId);
+    const display = document.getElementById(displayId);
+
+    if (input.files && input.files[0]) {
+        display.textContent = "✅ " + input.files[0].name;
+        display.style.display = "block";
+
+        const box = input.closest(".upload-box");
+        if (box) {
+            box.style.borderColor = "#4caf50";
+        }
+    }
+}
 
   async function submitForm() {
     if (!validatePage(4)) return;
@@ -970,6 +988,7 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(data)
       });
+      
 
       var json = await res.json();
       if (res.ok && json.success) {
